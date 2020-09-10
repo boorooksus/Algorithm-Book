@@ -24,4 +24,3 @@ class Solution:
         return True
 
 # 리트코드 234
-# 이전 풀이와 속도는 비슷
