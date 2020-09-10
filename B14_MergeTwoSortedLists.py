@@ -24,3 +24,5 @@ class Solution:
             node.next = node
             node.val = nums[i]
         return node
+
+# 오류
