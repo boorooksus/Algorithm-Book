@@ -24,4 +24,4 @@ sol = Solution()
 print(sol.longestPalindrome("babad"))
 
 
-# 시간 초과
+#
