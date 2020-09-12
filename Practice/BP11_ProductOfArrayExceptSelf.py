@@ -15,5 +15,5 @@ class Solution:
             p *= nums[i]
 
         return res
-    
+
 # 다시 풀것!!
