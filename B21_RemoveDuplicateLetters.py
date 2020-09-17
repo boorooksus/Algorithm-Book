@@ -5,3 +5,6 @@ class Solution:
             if set(s) == set(suffix):
                 return char + self.removeDuplicateLetters(suffix.replace(char, ''))
         return ''
+
+# leetcode: 316
+# set 자료형, 재귀 함수
