@@ -34,3 +34,6 @@ for i in range(1, 6):
     head.next = ListNode(i)
     head = head.next
 sol.oddEvenList(root.next)
+
+# leetcode: 328
+# 다음엔 while문의 기준을 head가 아닌 even으로 잡도록 하자
