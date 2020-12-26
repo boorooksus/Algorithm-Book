@@ -32,4 +32,4 @@ class Solution:
 
 # leetcode: 200
 # visited 행렬 없이 풀이(공간 복잡도 O(n) 감소)
-# grid 행렬 매번 인자로 안넘겨도 됨
+# grid 행렬 매번 인자로 안넘겨도 됨(중첩함수 - 부모의 변수 자식에서도 사용 가능)
