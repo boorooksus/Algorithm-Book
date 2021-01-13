@@ -16,6 +16,6 @@ class Solution:
             return node
         else:
             return t1 or t2
-        
+
 
 # leetcode: 617
