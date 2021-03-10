@@ -7,7 +7,7 @@ class Solution:
         hq = []
         for person in people:
             heapq.heappush(hq, [-person[0], person[1]])
-            
+
         res = []
         while hq:
             person = heapq.heappop(hq)
