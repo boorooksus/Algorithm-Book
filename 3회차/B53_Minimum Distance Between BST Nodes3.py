@@ -11,10 +11,10 @@ class TreeNode:
 
 
 class Solution:
-    prev = -sys.maxsize
-    ans = sys.maxsize
-
     def minDiffInBST(self, root: Optional[TreeNode]) -> int:
+        prev = -sys.maxsize
+        ans = sys.maxsize
+
         node = root
         stack = []
 
@@ -24,10 +24,10 @@ class Solution:
                 node = node.left
 
             node = stack.pop()
-            self.ans = min(self.ans, node.val - self.prev)
-            self.prev = node.val
+            ans = min(ans, node.val - prev)
+            prev = node.val
 
             node = node.right
 
-        return self.ans
-    
+        return ans
+
