@@ -1,19 +1,26 @@
 from sys import stdin, setrecursionlimit
+from typing import List
 setrecursionlimit(10 ** 9)
 
 
-class TreeNode:
-    def __init__(self, val: int):
-        self.val = val
-        self.left = None
-        self.right = None
+def get_postorder(nums: List) -> List:
+    if len(nums) <= 1:
+        return nums
+
+    for i in range(1, len(nums)):
+        if nums[i] > nums[0]:
+            return get_postorder(nums[1:i]) + get_postorder(nums[i:]) + [nums[0]]
+
+    return get_postorder(nums[1:]) + [nums[0]]
 
 
-def make_tree() -> TreeNode:
-    val = int(stdin.readline())
+nums = []
+while True:
+    try:
+        num = int(stdin.readline())
+        nums.append(num)
+    except:
+        break
 
-    node = TreeNode(val)
-    val.left = make_tree()
-    val.right = make_tree()
-
-    return node
+for num in get_postorder(nums):
+    print(num)
