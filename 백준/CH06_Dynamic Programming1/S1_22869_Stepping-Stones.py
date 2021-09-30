@@ -9,16 +9,16 @@ def get_cost(x:int, y:int) -> int:
 n, k = map(int, stdin.readline().split())
 a = list(map(int, stdin.readline().split()))
 
-dp = [[0 for _ in range(n)] for _ in range(n)]
+dp = [False for _ in range(n)]
+dp[0] = True
 
-for end in range(1, n):
-    for start in range(end):
-        cost = sys.maxsize
-        for stop in range(start, end):
-            temp = dp[stop][start] + get_cost(stop, end)
-            cost = min(cost, temp)
-        dp[end][start] = cost
+for i in range(1, n):
+    cost = sys.maxsize
+    for j in range(0, i):
+        if dp[j]:
+            cost = min(cost, get_cost(j, i))
 
-x = 1
-print('YES') if dp[-1][0] <= k \
-    else print('NO')
+    if cost <= k:
+        dp[i] = True
+
+print('YES') if dp[-1] else print('NO')
