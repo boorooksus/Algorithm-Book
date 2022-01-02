@@ -1,7 +1,6 @@
 import re
 
-
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s = re.sub('\W|_', '', s)
-        return s.lower() == s.lower()[::-1]
+        s = re.sub(r'[^a-z0-9]', '', s.lower())
+        return s == s[::-1]

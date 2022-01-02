@@ -7,5 +7,5 @@ class Solution:
         anagrams = defaultdict(list)
         for word in strs:
             anagrams[''.join(sorted(word))].append(word)
-
+        print(anagrams)
         return list(anagrams.values())

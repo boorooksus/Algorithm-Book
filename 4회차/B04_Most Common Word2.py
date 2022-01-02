@@ -1,19 +1,18 @@
 from typing import List
-from collections import Counter
+from collections import defaultdict
 import re
 
 
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
         words = re.sub(r'[^ a-z]', ' ', paragraph.lower()).split()
-        cnt = Counter(words)
-
-        while cnt:
-            word = cnt.most_common(1)[0][0]
+        cnts = defaultdict(int)
+        for word in words:
             if word not in banned:
-                return word
-            cnt.pop(word)
-        return None
+                cnts[word] += 1
+        words.sort(key=lambda x: cnts[x], reverse=True)
+
+        return words[0]
 
 
 print(Solution().mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.",
