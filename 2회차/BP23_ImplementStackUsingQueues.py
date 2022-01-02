@@ -29,7 +29,7 @@ class MyStack:
             temp = temp.next
         self.stack = temp
         self.stack.next = None
-        # temp.next = None
+        # 3.5회차.next = None
         return top
 
     def top(self) -> int:
