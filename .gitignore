@@ -1,6 +1,7 @@
 test.py
 코테/
 
+venv/
 .idea/
 .idea/Algorithm-Book.iml
 .idea/misc.xml
