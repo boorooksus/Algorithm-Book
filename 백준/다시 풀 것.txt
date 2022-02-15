@@ -16,7 +16,7 @@ CH15-divide_and_conquer:
 CH16-prefix_sum: 20438 2015
 CH17-String: 17609
 CH18-shortest_path: 11403 18352
-CH19-topological_sorting: 14567
-CH20-disjoint_set(Union_Find):
+CH19-topological_sorting: 14567 1005
+CH20-disjoint_set(Union_Find): 1976
 CH21-minimum_spanning_tree:
 CH22-trie:
