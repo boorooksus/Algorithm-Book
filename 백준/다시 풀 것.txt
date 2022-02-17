@@ -4,7 +4,7 @@ CH03_Tree
 CH04_Math 22943 1747
 CH05_Greedy 21758 21314
 CH06_Dynamic Programming1 21317 22869
-CH07_Dynamic Programming2 15724 9084
+CH07_Dynamic Programming2 15724 9084 21939
 CH08_Two Pointers 2470 22862
 Implementaion: 21611 21608
 Graph Traversal: 5547 16918
