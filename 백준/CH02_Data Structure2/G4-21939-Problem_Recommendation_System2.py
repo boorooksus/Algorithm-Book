@@ -24,16 +24,17 @@ class Problems:
             return self.easy[0][1]
 
     def add(self, p, l) -> None:
-        while self.easy and not self.in_list[self.easy[0][1]]:
-            heapq.heappop(self.easy)
-        while self.hard and not self.in_list[-self.hard[0][1]]:
-            heapq.heappop(self.hard)
         self.in_list[p] = True
         heapq.heappush(self.easy, (l, p))
         heapq.heappush(self.hard, (-l, -p))
 
     def solved(self, p) -> None:
         self.in_list[p] = False
+        while self.easy and not self.in_list[self.easy[0][1]]:
+            heapq.heappop(self.easy)
+        while self.hard and not self.in_list[-self.hard[0][1]]:
+            heapq.heappop(self.hard)
+
 
 def main():
     def input():
