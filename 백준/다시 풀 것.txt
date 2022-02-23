@@ -8,7 +8,7 @@ CH07_Dynamic Programming2 15724 9084 21939 12865
 CH08_Two Pointers 2470 22862 (15961)
 Implementaion: 21611 21608 22859
 Graph Traversal: 5547 16918
-Brute Force: 15661 (2961)
+Brute Force: 15661 (2961) 12919
 Simulation: (20055)
 Binaray Search: 22871 2110 (11663)
 백트래킹: 18430 6443
