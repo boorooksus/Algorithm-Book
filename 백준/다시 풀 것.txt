@@ -10,7 +10,7 @@ Implementaion: 21611 21608 22859
 Graph Traversal: 5547 16918
 Brute Force: 15661 (2961) 12919
 Simulation: (20055)
-Binaray Search: 22871 2110 (11663)
+Binaray Search: 22871 2110 (11663) 3079
 백트래킹: 18430 6443
 CH15-divide_and_conquer:
 CH16-prefix_sum: 20438 2015
