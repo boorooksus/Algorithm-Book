@@ -1,5 +1,5 @@
-CH01_Data Structure1 2504
-CH02_Data Structure2
+CH01_Data Structure1 2504$
+CH02_Data Structure2 21939 21944
 CH03_Tree
 CH04_Math 22943 1747
 CH05_Greedy 21758 21314 11000
