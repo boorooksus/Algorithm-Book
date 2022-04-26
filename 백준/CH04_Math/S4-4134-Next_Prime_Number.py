@@ -1,5 +1,16 @@
 from sys import stdin
-from collections import defaultdict
+from math import sqrt
+
+
+def is_prime(num: int) -> bool:
+    if num == 0 or num == 1:
+        return False
+
+    for i in range(2, int(sqrt(num)) + 1):
+        if num % i == 0:
+            return False
+
+    return True
 
 
 if __name__ == "__main__":
@@ -7,23 +18,11 @@ if __name__ == "__main__":
         return stdin.readline().rstrip()
 
     T = int(input())
-    nums = [int(input()) for _ in range(T)]
-
-    visit = defaultdict(bool)
-    max_num = max(nums)
-    for i in range(2, max_num):
-        if visit[i]:
-            continue
-        j = 2
-        while i * j < max_num * 2:
-            visit[i * j] = True
-            j += 1
-
-    for num in nums:
-        res = num
+    for _ in range(T):
+        num = int(input())
         while True:
-            if not visit[res]:
-                print(res)
+            if is_prime(num):
+                print(num)
                 break
-            res += 1
+            num += 1
 
