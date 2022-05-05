@@ -1,3 +1,7 @@
+"""
+lazy propagation을 문제에 맞게 적용
+query함수에서 인자로 범위가 아닌 인덱스 하나만 받음
+"""
 from sys import stdin
 from math import log2, ceil
 
@@ -43,17 +47,18 @@ def update(node, start, end, left, right, val) -> None:
     tree[node] = tree[2 * node] + tree[2 * node + 1]
 
 
-def query(node, start, end, left, right) -> int:
+def query(node, start, end, idx) -> int:
     propagation(node, start, end)
 
-    if right < start or end < left:
+    if idx < start or end < idx:
         return 0
-    if left <= start and end <= right:
+
+    if start == end == idx:
         return tree[node]
 
     mid = start + (end - start) // 2
-    return query(2 * node, start, mid, left, right) + \
-           query(2 * node + 1, mid + 1, end, left, right)
+    return query(2 * node, start, mid, idx) + \
+           query(2 * node + 1, mid + 1, end, idx)
 
 
 if __name__ == "__main__":
@@ -71,4 +76,4 @@ if __name__ == "__main__":
         if args[0] == 1:
             update(1, 0, N - 1, args[1] - 1, args[2] - 1, args[3])
         else:
-            print(query(1, 0, N - 1, args[1] - 1, args[1] - 1))
+            print(query(1, 0, N - 1, args[1] - 1))
