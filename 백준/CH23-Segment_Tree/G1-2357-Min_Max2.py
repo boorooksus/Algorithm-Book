@@ -5,7 +5,7 @@ from sys import stdin
 from math import ceil, log2
 
 
-INF = 100001
+INF = 1000_000_001
 
 
 def init():

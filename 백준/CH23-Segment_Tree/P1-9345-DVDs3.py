@@ -17,10 +17,17 @@ def init():
         tree[i] = (min(l[0], r[0]), max(l[1], r[1]))
 
 
-def update(idx, val):
-    tree[N + idx] = (val, val)
+def update(a, b):
+    tree[N + a] = (arr[b], arr[b])
+    tree[N + b] = (arr[a], arr[a])
 
-    i = N + idx
+    i = N + a
+    while i > 1:
+        tree[i >> 1] = (min(tree[i][0], tree[i + 1][0]),
+                        max(tree[i][1], tree[i + 1][1]))
+        i >>= 1
+
+    i = N + b
     while i > 1:
         tree[i >> 1] = (min(tree[i][0], tree[i + 1][0]),
                         max(tree[i][1], tree[i + 1][1]))
@@ -50,29 +57,20 @@ def query(left, right):
 if __name__ == "__main__":
     input = lambda: stdin.readline().rstrip()
 
-    # T = int(input())
-    # for _ in range(T):
-    #     N, K = map(int, input().split())
-    #     arr = list(i for i in range(N))
-    #     tree = list((0, 0) for _ in range(1 << (int(ceil(log2(N))) + 1)))
-    #     init()
+    T = int(input())
+    for _ in range(T):
+        N, K = map(int, input().split())
+        arr = list(i for i in range(N))
+        tree = list((0, 0) for _ in range(1 << (int(ceil(log2(N))) + 1)))
+        init()
 
-        # for _ in range(K):
-        #     Q, A, B = map(int, input().split())
-        #
-        #     if Q == 0:
-        #         update(1, 0, N - 1, A, B)
-        #         arr[A], arr[B] = arr[B], arr[A]
-        #     else:
-        #         res = query(1, 0, N - 1, A, B)
-        #         temp = get_sum(A, B)
-        #         print(["NO", "YES"][res[0] == temp and res[1] == A and res[2] == B])
-    N, M = map(int, input().split())
-    arr = [int(input()) for _ in range(N)]
+        for _ in range(K):
+            Q, A, B = map(int, input().split())
 
-    tree = list((0, 0) for _ in range(400001))
-    init()
-    for _ in range(M):
-        a, b = map(int, input().split())
-        res = query(a, b)
-        print("%d %d" % (res[0], res[1]))
+            if Q == 0:
+                update(A, B)
+                arr[A], arr[B] = arr[B], arr[A]
+            else:
+                res = query(A, B + 1)
+                print(["NO", "YES"][res[0] == arr[A] and res[1] == arr[B]])
+
