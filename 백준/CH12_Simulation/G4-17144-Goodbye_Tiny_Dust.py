@@ -28,18 +28,18 @@ def spread():
                 if 0 <= ny < R and 0 <= nx < C and arr[ny][nx] != -1:
                     cnt += 1
                     res[ny][nx] += dust
-            res[cy][cx] = arr[cy][cx] - dust * cnt
+            res[cy][cx] += arr[cy][cx] - dust * cnt
     arr = res[:]
 
 
 def rotate(sy, sx, clockwise):
-    dy = [-1, 0, 1, 0]
+    dy = [1, 0, -1, 0]
     dx = [0, 1, 0, -1]
     if not clockwise:
-        dy = [1, 0, -1, 0]
+        dy = [-1, 0, 1, 0]
 
     cy, cx, direc, ny, nx = sy, sx, 0, -1, -1
-    while ny != cleaner[clockwise] or nx != 0:
+    while ny != sy or nx != sx:
         ny, nx = cy + dy[direc], cx + dx[direc]
 
         if (not clockwise and (ny < 0 or ny > sy)) \
@@ -51,7 +51,7 @@ def rotate(sy, sx, clockwise):
         arr[cy][cx] = arr[ny][nx]
         cy, cx = ny, nx
 
-    arr[cy][cx] = 0
+    arr[cy][cx + 1] = 0
     arr[sy][0] = -1
 
 
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     for _ in range(T):
         spread()
         rotate(cleaner[0], 0, 0)
-        rotate(cleaner[1], 1, 1)
+        rotate(cleaner[1], 0, 1)
 
     ans = sum(map(sum, arr)) + 2
     print(ans)
