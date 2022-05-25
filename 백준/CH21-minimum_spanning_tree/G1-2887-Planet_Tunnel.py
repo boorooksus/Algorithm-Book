@@ -13,8 +13,8 @@ def find(x: int) -> int:
 
 def union(x: int, y: int) -> None:
     x, y = find(x), find(y)
-    if x == y:
-        return
+    # if x == y:
+    #     return
     parents[x] += parents[y]
     parents[y] = x
 
@@ -37,8 +37,8 @@ def kruscal() -> int:
         if a != b:
             res += cost
             union(a, b)
-            if parents[a] == -N:
-                break
+            # if parents[a] == -N:
+            #     break
     return res
 
 
