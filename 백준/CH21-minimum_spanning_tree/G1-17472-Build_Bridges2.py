@@ -1,8 +1,8 @@
 """
-통과
+코드 수 줄임
 """
 from sys import stdin
-from collections import deque, defaultdict
+from collections import deque
 
 
 input = lambda: stdin.readline().rstrip()
@@ -23,9 +23,10 @@ def bfs(y, x, idx) -> None:
                 if arr[ny][nx] > 0:
                     arr[ny][nx] = -idx
                     dq.append((ny, nx))
-                elif arr[ny][nx] == 0:
-                    rows[cy].append((cx, idx))
-                    cols[cx].append((cy, idx))
+                elif arr[ny][nx] == 0 and \
+                        (not borders[0][cy] or borders[0][cy][-1] != [cx, idx]):
+                    borders[0][cy].append([cx, idx])
+                    borders[1][cx].append([cy, idx])
 
 
 def find(x: int) -> int:
@@ -59,7 +60,7 @@ def kruscal():
 if __name__ == "__main__":
     N, M = map(int, input().split())
     arr = list(list(map(int, input().split())) for _ in range(N))
-    rows, cols = defaultdict(list), defaultdict(list)
+    borders = list(list([] for _ in range(10)) for _ in range(2))
     parents = [-1] * 7
 
     cnt = 0
@@ -70,19 +71,12 @@ if __name__ == "__main__":
                 bfs(i, j, cnt)
 
     edges = []
-    for y in rows:
-        rows[y].sort()
-
-        for i in range(len(rows[y]) - 1):
-            dist = rows[y][i + 1][0] - rows[y][i][0] - 1
-            if dist > 1:
-                edges.append((dist, rows[y][i][1], rows[y][i + 1][1]))
-
-    for x in cols:
-        cols[x].sort()
-        for i in range(len(cols[x]) - 1):
-            dist = cols[x][i + 1][0] - cols[x][i][0] - 1
-            if dist > 1:
-                edges.append((dist, cols[x][i][1], cols[x][i + 1][1]))
+    for i in range(2):
+        for j in range(len(borders[i])):
+            borders[i][j].sort()
+            for k in range(len(borders[i][j]) - 1):
+                dist = borders[i][j][k + 1][0] - borders[i][j][k][0] - 1
+                if dist > 1:
+                    edges.append([dist, borders[i][j][k][1], borders[i][j][k + 1][1]])
 
     print(kruscal())
