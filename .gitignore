@@ -11,3 +11,5 @@ venv/
 Algorithm-Book.iml
 misc.xml
 
+.DS_Store
+
